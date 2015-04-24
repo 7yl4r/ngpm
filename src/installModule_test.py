@@ -3,7 +3,7 @@ import unittest
 from CONFIG import CONFIG
 import utils
 import installModule
-from ..src import main
+from ..ngpm import main
 
 TEST_NAME = "ngUIBootFooter"  # must be a real module in the library
 

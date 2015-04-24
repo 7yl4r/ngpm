@@ -53,7 +53,7 @@ def handle_flag(flag, args):
         return 1
 
 
-def main(args):
+def main(args=[]):
     if len(args) < 1:
         show_usage()
     else:

@@ -1,6 +1,8 @@
 require('angular')
 
-app = angular.module('ng-ui-boot-footer', [])
+app = angular.module('ng-ui-boot-footer', [
+    require('social-buttons')
+])
 
 app.directive("ngUIBootFooter", () ->
     return {

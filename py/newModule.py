@@ -42,7 +42,7 @@ def create_module(module_name=None):
     directory = './ng-modules/'+camel_name+'/'
     print 'creating', directory
     if os.path.exists(directory):
-        raise ValueError("module name already taken")
+        raise ValueError('module name '+str(directory)+'" already taken')
     else:
         os.makedirs(directory)
 
@@ -60,20 +60,9 @@ def create_module(module_name=None):
     with open(directory + camel_name + '.less', 'w') as w_file:
         w_file.write("/* styles for " + module_name + " module */")
 
-    try:
-        print 'adding module to package.json'
-        inserted = False
-        for line in fileinput.input('package.json', inplace=1):
-            if line.strip() == '"browser":{':
-                inserted = True
-            else:
-                if inserted:
-                    print '        "' + hyphen_name + '":"' + directory + camel_name + '.js",'
-                inserted = False
-            print line,
-    except OSError as err:
-        print '\n\nERR: Could not write to package.json\n\n'
-        raise err
+    data = utils.get_package_json()
+    data['browser'][hyphen_name] = directory + camel_name + '.coffee'
+    utils.write_package_json(data)
 
     try:
         print 'adding module to app.coffee main module'

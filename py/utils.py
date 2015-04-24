@@ -6,13 +6,13 @@ import CONFIG
 
 
 def get_package_json():
-    with open(CONFIG.package_json) as json_file:
+    with open(CONFIG.package_json, 'r') as json_file:
         return json.load(json_file)
 
 
 def write_package_json(data):
     # overwrites package.json
-    with open(CONFIG.package_json) as json_file:
+    with open(CONFIG.package_json, 'w') as json_file:
         json.dump(data,json_file, indent=4, sort_keys=True)
 
 

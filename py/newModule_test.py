@@ -7,7 +7,7 @@ import CONFIG
 import utils
 import newModule
 
-TEST_NAME = "temp"  # fake module name to use for testing (should be lowerCamelCase)
+TEST_NAME = "temp2"  # fake module name to use for testing (should be lowerCamelCase)
 
 
 class TestNewModule(unittest.TestCase):

@@ -136,12 +136,12 @@ def add_coffee(name):
     # adds line require()ing name module to app.coffee
     name = get_hyphen_name(name)
     try:
-        print 'adding module to app.coffee main module'
+        print 'adding module to', CONFIG.app_coffee, 'main module'
         inserted = False
         flag = False
         flag2 = False
         lines = []
-        for line in fileinput.input('app.coffee', inplace=1):
+        for line in fileinput.input(CONFIG.app_coffee, inplace=1):
             if "# WARN: This comment required for ngpm; do not alter!" in line:
                 inserted = True
                 flag = True
@@ -162,7 +162,7 @@ def add_coffee(name):
                 continue
             print line, '==', '     '+my_str, '=', my_str in line
     except OSError as err:
-        print '\n\nERR: could not write to app.coffee\n\n'
+        print '\n\nERR: could not write to', CONFIG.app_coffee, '\n\n'
         raise err
 
 

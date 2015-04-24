@@ -5,6 +5,7 @@ import sys
 
 from py.newModule import create_module
 from py.uninstallModule import remove_module
+from py.lsModules import ls
 
 VERSION = '0.0.1'
 SHORT_FLAGS = {
@@ -22,7 +23,8 @@ Angular Package Manager (ngpm) usage:
 
     COMMANDS:
     new [moduleName]          creates boilerplate for a new module
-    rm [moduleName]           uninstalls module
+    rm [moduleName]           uninstalls
+    ls [search_string]        list installed modules
 
     """
 
@@ -70,16 +72,20 @@ def main(args):
                     create_module()
                 return
 
-            elif args[i] == 'rm' or 'remove' or 'uninstall':
+            elif args[i] in ['rm', 'remove', 'uninstall']:
                 try:
                     remove_module(args[i+1])
-                except KeyError:
+                except IndexError:
                     print "\n\nERR: must give module name to be removed\n\n"
                     show_usage()
                     return
 
-            elif args[i] == 'list':
-                print 'TODO: list installed modules'
+            elif args[i] in ['list', 'ls']:
+                try:
+                    ls(args[i+1])
+                except IndexError:
+                    ls()
+                return
 
             elif args[i] == 'install':
                 print 'TODO: read package.json ng-dep, install packages to ng-modules, add to app.css, app.js'

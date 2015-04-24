@@ -8,7 +8,7 @@ from src.uninstallModule import remove_module
 from src.lsModules import ls
 from src.installModule import install
 
-VERSION = '0.2.0'
+from setup import VERSION
 SHORT_FLAGS = {
     '-v': '--version',
     '-h': '--help'
@@ -44,7 +44,7 @@ def handle_flag(flag, args):
         else:
             raise NotImplementedError('show version of module' + args[1])
             return 2
-    elif flag == '--help' or '--man':
+    elif flag in ['--help', '--man']:
         show_usage()
         return 1
     else:

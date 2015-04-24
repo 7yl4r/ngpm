@@ -9,7 +9,7 @@ from setuptools import setup, find_packages
 from codecs import open
 from os import path
 
-from ngpm import VERSION
+VERSION = '0.2.1'
 
 here = path.abspath(path.dirname(__file__))
 

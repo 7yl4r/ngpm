@@ -2,13 +2,13 @@
 __author__ = '7yl4r'
 
 import sys
+from setup import VERSION
 
 from ngpm.newModule import create_module
 from ngpm.uninstallModule import remove_module
 from ngpm.lsModules import ls
 from ngpm.installModule import install
 
-VERSION = '0.1.0'
 SHORT_FLAGS = {
     '-v': '--version',
     '-h': '--help'

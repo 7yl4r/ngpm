@@ -12,8 +12,7 @@ def get_space_name(string):
 
 def get_hyphen_name(name):
     name = get_space_name(name)
-    name.replace(" ", "-")
-    return name
+    return name.replace(" ", "-")
 
 
 def get_camel_name(name):

@@ -3,10 +3,10 @@ __author__ = '7yl4r'
 
 import sys
 
-from py.newModule import create_module
-from py.uninstallModule import remove_module
-from py.lsModules import ls
-from py.installModule import install
+from ngpm.newModule import create_module
+from ngpm.uninstallModule import remove_module
+from ngpm.lsModules import ls
+from ngpm.installModule import install
 
 VERSION = '0.1.0'
 SHORT_FLAGS = {

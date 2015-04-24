@@ -8,7 +8,7 @@ from src.uninstallModule import remove_module
 from src.lsModules import ls
 from src.installModule import install
 
-from setup import VERSION
+VERSION = '0.2.1'
 SHORT_FLAGS = {
     '-v': '--version',
     '-h': '--help'

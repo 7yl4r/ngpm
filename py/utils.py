@@ -23,7 +23,7 @@ def remove_line(filename, rm_line):
             for line in in_file:
                 if line != rm_line:
                     out_file.write(line)
-    os.remove(CONFIG.app_less)
+    os.remove(filename)
     os.rename(TEMP_FILE, filename)
 
 

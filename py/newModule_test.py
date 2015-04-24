@@ -17,7 +17,7 @@ class TestNewModule(unittest.TestCase):
         newModule.create_module(TEST_NAME)
 
     def tearDown(self):
-        main(['rm', 'TEST_NAME'])
+        main(['rm', TEST_NAME])
 
     def test_that_requested_files_exists(self):
         """tests that directory is created"""

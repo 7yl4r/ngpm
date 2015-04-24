@@ -28,7 +28,7 @@
         "situation": "./ng-modules/situation/situation.js", 
         "social-button-directive": "./ng-modules/socialButtons/socialButtons.js", 
         "splash-header": "./ng-modules/splashHeader/splashHeader.js", 
-        "trader": "./ng-modules/trader/trader.coffee",
+        "trader": "./ng-modules/trader/trader.coffee", 
         "travel-screen": "./ng-modules/travelScreen/travelScreen.coffee", 
         "ui.bootstrap": "./node_modules/angular-bootstrap/dist/ui-bootstrap.min.js", 
         "you-win": "./ng-modules/youWin/youWin.js"

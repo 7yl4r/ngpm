@@ -5,6 +5,27 @@ from ..CONFIG import CONFIG
 from name_utils import *
 
 
+def package_is_complete(camel_name, dir=CONFIG.module_dir):
+    # returns true if all is good, returns false if malformed package
+    if (os.path.isfile(dir+'/'+camel_name+'/'+camel_name+'.html') and
+        os.path.isfile(dir+'/'+camel_name+'/'+camel_name+'.less') and
+        (
+            os.path.isfile(dir+'/'+camel_name+'/'+camel_name+'.coffee') or
+            os.path.isfile(dir+'/'+camel_name+'/'+camel_name+'.js')
+        )
+    ):
+        return True
+    else:
+        return False
+
+
+def package_exists(package_name, dir=CONFIG.module_dir):
+    name = get_camel_name(package_name)
+    if not os.path.isdir(dir+"/"+name) and package_is_complete(name, dir):
+        return True
+
+
+
 def get_package_json():
     with open(CONFIG.package_json, 'r') as json_file:
         return json.load(json_file)

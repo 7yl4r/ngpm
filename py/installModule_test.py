@@ -2,30 +2,31 @@ import unittest
 
 import os.path
 
-from CONFIG import CONFIG
+import CONFIG
 import utils
-import newModule
+import installModule
 from ..ngpm import main
 
 TEST_NAME = "temp2"  # fake module name to use for testing (should be lowerCamelCase)
 
 
-class TestNewModule(unittest.TestCase):
+class TestInstallModule(unittest.TestCase):
 
     def setUp(self):
-        newModule.create_module(TEST_NAME)
+        #installModule.install(TEST_NAME)
+        return
 
     def tearDown(self):
-        main(['rm', TEST_NAME])
+        #main(['rm', TEST_NAME])
+        return
 
     def test_that_requested_files_exists(self):
         """tests that directory is created"""
-        self.assertTrue(os.path.isfile(CONFIG.module_dir+'/'+TEST_NAME+'/'+TEST_NAME+'.html'))
-        self.assertTrue(os.path.isfile(CONFIG.module_dir+'/'+TEST_NAME+'/'+TEST_NAME+'.less'))
+        return
 
     def test_that_dep_added_to_package_json(self):
         data = utils.get_package_json()
-        self.assertIsNotNone(data['browser'][utils.get_hyphen_name(TEST_NAME)])
+        #self.assertIsNotNone(data['browser'][utils.get_hyphen_name(TEST_NAME)])
     
 if __name__ == '__main__':
     unittest.main()

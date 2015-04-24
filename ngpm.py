@@ -91,6 +91,8 @@ def main(args):
             elif args[i] in ['add', 'install']:
                 print 'TODO: read package.json ng-dep, install packages to ng-modules, add to app.css, app.js'
 
+            # TODO: elif args[i] in ['mv', 'rename']:
+
             else:
                 show_usage()
     return

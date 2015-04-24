@@ -1,2 +1,2 @@
 # ngpm
-Angular Package Manager for ABL packages
+Angular Package Manager for angular-browserify-lessc (ABL) modules.

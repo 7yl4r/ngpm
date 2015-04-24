@@ -1,7 +1,7 @@
 import shutil
 
 import utils
-import CONFIG
+from CONFIG import CONFIG
 
 
 def remove_module(name):
@@ -9,16 +9,28 @@ def remove_module(name):
     hyphen_name = utils.get_hyphen_name(name)
 
     # del the module
-    shutil.rmtree(CONFIG.module_dir+'/'+camel_name)
+    try:
+        shutil.rmtree(CONFIG.module_dir+'/'+camel_name)
+    except OSError as err:
+        if err.errno == 2:
+            print "\tWARN: could not find installed module at", CONFIG.module_dir+'/'+camel_name+'/'
+        else:
+            raise err
 
     # remove from package.json
     data = utils.get_package_json()
-    del data['browser'][hyphen_name]
-    # overwrite package.json
-    utils.write_package_json(data)
+    try:
+        del data['browser'][hyphen_name]
+    except KeyError:
+        print "\tWARN: could not find", name, "in", CONFIG.package_json
+    else:
+        # overwrite package.json
+        utils.write_package_json(data)
 
     # remove from app.less
-    utils.remove_less(name)
+    if not utils.remove_less(name):
+        print '\tWARN: could not find @import of', name, 'in', CONFIG.app_less
 
     # remove from app.coffee
-    utils.remove_coffee(name)
+    if not utils.remove_coffee(name):
+        print '\tWARN: could not find require("', name, '" in', CONFIG.app_coffee

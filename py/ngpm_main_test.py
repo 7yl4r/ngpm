@@ -2,7 +2,7 @@ import unittest
 
 import os
 
-import CONFIG
+from CONFIG import CONFIG
 import utils
 from ..ngpm import main
 

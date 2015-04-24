@@ -3,7 +3,6 @@ import unittest
 import shutil
 import os.path
 
-import CONFIG
 import utils
 import newModule
 from ..ngpm import main

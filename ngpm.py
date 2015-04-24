@@ -23,7 +23,8 @@ Angular Package Manager (ngpm) usage:
 
     COMMANDS:
     new [moduleName]          creates boilerplate for a new module
-    rm [moduleName]           uninstalls
+    rm [moduleName]           uninstalls module
+    add [moduleName]          installs module
     ls [search_string]        list installed modules
 
     """
@@ -78,7 +79,7 @@ def main(args):
                 except IndexError:
                     print "\n\nERR: must give module name to be removed\n\n"
                     show_usage()
-                    return
+                return
 
             elif args[i] in ['list', 'ls']:
                 try:
@@ -87,7 +88,7 @@ def main(args):
                     ls()
                 return
 
-            elif args[i] == 'install':
+            elif args[i] in ['add', 'install']:
                 print 'TODO: read package.json ng-dep, install packages to ng-modules, add to app.css, app.js'
 
             else:

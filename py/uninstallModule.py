@@ -33,4 +33,4 @@ def remove_module(name):
 
     # remove from app.coffee
     if not utils.remove_coffee(name):
-        print '\tWARN: could not find require("', name, '" in', CONFIG.app_coffee
+        print '\tWARN: could not find require() for '+name+' in', CONFIG.app_coffee

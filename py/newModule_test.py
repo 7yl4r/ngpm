@@ -18,14 +18,8 @@ class TestNewModule(unittest.TestCase):
     def tearDown(self):
         main(['rm', TEST_NAME])
 
-    def test_that_requested_files_exists(self):
-        """tests that directory is created"""
-        self.assertTrue(os.path.isfile(CONFIG.module_dir+'/'+TEST_NAME+'/'+TEST_NAME+'.html'))
-        self.assertTrue(os.path.isfile(CONFIG.module_dir+'/'+TEST_NAME+'/'+TEST_NAME+'.less'))
-
-    def test_that_dep_added_to_package_json(self):
-        data = utils.get_package_json()
-        self.assertIsNotNone(data['browser'][utils.get_hyphen_name(TEST_NAME)])
+    def test_that_new_module_is_created(self):
+        self.assertTrue(utils.module_is_installed(TEST_NAME))
     
 if __name__ == '__main__':
     unittest.main()

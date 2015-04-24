@@ -3,7 +3,7 @@ require('angular')
 
 # "main" controller
 app = angular.module('the-oregon-trajectory', [
-        # WARN: do not change this comment line unless you update newModule.py as well!
+        # WARN: This comment required for ngpm; do not alter!
         require('ship-customizer'),
         require('leaderboard'),
         require('asteroid-mining'),

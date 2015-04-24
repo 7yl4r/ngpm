@@ -64,27 +64,6 @@ def create_module(module_name=None):
     data['browser'][hyphen_name] = directory + camel_name + '.coffee'
     utils.write_package_json(data)
 
-    try:
-        print 'adding module to app.coffee main module'
-        inserted = False
-        for line in fileinput.input('app.coffee', inplace=1):
-            if line.strip() == "        # WARN: do not change this comment line unless you update newModule.py as well!":
-                inserted = True
-            else:
-                if inserted:
-                    print "        require('" + hyphen_name + "'),"
-                inserted = False
-            print line,
-    except OSError as err:
-        print '\n\nERR: could not write to app.coffee\n\n'
-        raise err
+    utils.add_coffee(hyphen_name)
 
-    try:
-        print 'adding styles to app.less'
-        with open("app.less", 'r+') as f:
-            content = f.read()
-            f.seek(0, 0)
-            f.write('@import "' + directory[2:] + camel_name + '";\n' + content)
-    except OSError as err:
-        print '\n\nERR: could not write to app.less\n\n'
-        raise err
+    utils.add_less(camel_name)

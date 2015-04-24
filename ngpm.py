@@ -6,8 +6,9 @@ import sys
 from py.newModule import create_module
 from py.uninstallModule import remove_module
 from py.lsModules import ls
+from py.installModule import install
 
-VERSION = '0.0.1'
+VERSION = '0.1.0'
 SHORT_FLAGS = {
     '-v': '--version',
     '-h': '--help'
@@ -22,10 +23,10 @@ Angular Package Manager (ngpm) usage:
     -h | --help | --man       shows this help
 
     COMMANDS:
-    new [moduleName]          creates boilerplate for a new module
-    rm [moduleName]           uninstalls module
-    add [moduleName]          installs module
-    ls [search_string]        list installed modules
+    new [moduleName]                      creates boilerplate for a new module
+    rm  | uninstall | remove [moduleName] uninstalls module
+    add | install [moduleName]            installs module
+    ls [search_string]                    list installed modules
 
     """
 
@@ -89,7 +90,12 @@ def main(args):
                 return
 
             elif args[i] in ['add', 'install']:
-                print 'TODO: read package.json ng-dep, install packages to ng-modules, add to app.css, app.js'
+                try:
+                    install(args[i+1])
+                except IndexError:
+                    print "\n\nERR: must give module name to install from library\n\n"
+                    show_usage()
+                return
 
             # TODO: elif args[i] in ['mv', 'rename']:
 

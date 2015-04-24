@@ -10,19 +10,22 @@ from ..ngpm import main
 class TestMain(unittest.TestCase):
 
     def test_create_new(self):
-        """tests that directory is created"""
+        """tests create new module"""
+        fake_module = 'temp123abc'
         try:
-            main(['new', 'temp'])
-            self.assertTrue(os.path.isfile(CONFIG.module_dir+'/temp/temp.html'))
-            self.assertTrue(os.path.isfile(CONFIG.module_dir+'/temp/temp.less'))
+            main(['new', fake_module])
+            self.assertTrue(utils.module_is_installed(fake_module))
         finally:
-            main(['rm', 'temp'])
+            main(['rm', fake_module])
 
     def test_add_n_remove(self):
-        """tests create new, then rm module should return to initial state"""
-        main(['new', 'temp'])
-        main(['rm', 'temp'])
-        self.assertNotIn('temp', utils.get_package_json()['browser'])
+        """tests install new, then rm module should return to initial state"""
+        module = 'ngUiBootFooter'  # NOTE: must be real module in library
+        main(['add', module])
+        self.assertTrue(utils.module_is_installed(module))
+
+        main(['rm', module])
+        self.assertFalse(utils.module_is_installed(module))
 
     
 if __name__ == '__main__':

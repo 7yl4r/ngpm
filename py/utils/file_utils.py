@@ -58,6 +58,7 @@ def package_is_complete(camel_name, dir=CONFIG.module_dir):
 
 def package_exists(package_name, dir=CONFIG.module_dir):
     name = get_camel_name(package_name)
+    print 'not found:', dir+"/"+name
     return os.path.isdir(dir+"/"+name) and package_is_complete(name, dir)
 
 

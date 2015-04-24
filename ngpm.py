@@ -4,6 +4,7 @@ __author__ = '7yl4r'
 import sys
 
 from py.newModule import create_module
+from py.uninstallModule import remove_module
 
 VERSION = '0.0.1'
 SHORT_FLAGS = {
@@ -21,6 +22,7 @@ Angular Package Manager (ngpm) usage:
 
     COMMANDS:
     new [moduleName]          creates boilerplate for a new module
+    rm [moduleName]           uninstalls module
 
     """
 
@@ -67,6 +69,14 @@ def main(args):
                 except IndexError:
                     create_module()
                 return
+
+            elif args[i] == 'rm' or 'remove' or 'uninstall':
+                try:
+                    remove_module(args[i+1])
+                except KeyError:
+                    print "\n\nERR: must give module name to be removed\n\n"
+                    show_usage()
+                    return
 
             elif args[i] == 'list':
                 print 'TODO: list installed modules'

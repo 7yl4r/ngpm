@@ -27,49 +27,6 @@ app.controller("{1}Controller", ['data', '$scope', '$rootScope', function(data, 
 
 module.exports = angular.module('{0}').name;"""
 
-TEST_PAGE_PRE = """<!DOCTYPE html>
-<html lang="en" ng-app="the-oregon-trajectory" id="top">
-<head>
-   <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-
-   <title>ng-module test</title>
-
-   <meta name="description" content="angular & bootstrap boilerplate for rapid modern web dev">
-
-   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-   <!-- browserify bundle -->
-   <script src="./../../bundle.js"></script>
-
-   <!-- less bundle -->
-   <link rel="stylesheet" href="./../../bundle.css"/>
-
-   <link rel="author" href="https://github.com/7yl4r">
-</head>
-<body class="ng-cloak" ng-controller="MainCtrl">
-
-<nav-header></nav-header>
-
-<div role="main">
-
-   <div>
-        <!-- main menu needed here for init -->
-        <main-menu class="game-module" style="display:none"></main-menu>
-        """
-
-TEST_PAGE_POST = """
-    </div>
-
-</div><!-- /.main -->
-
-<app-footer></app-footer>
-
-</body>
-</html>
-"""
-
 module_name = raw_input("enter module name (with spaces (if any)). example: my module\n").strip()
 
 def get_camel_name(module_name):
@@ -107,10 +64,6 @@ with open(directory + camel_name + '.js', 'w') as file:
 print 'making less style file', camel_name + '.less'
 with open(directory + camel_name + '.less', 'w') as file:
     file.write("/* styles for " + module_name + " module */")
-
-print 'making test html page ng-modules/' + camel_name + '/index.html'
-with open(directory + 'index.html', 'w') as file:
-    file.write(TEST_PAGE_PRE + module_name + ' test: <br> <' + hyphen_name + '></' + hyphen_name + '>' + TEST_PAGE_POST)
 
 print 'adding module to package.json'
 inserted = False

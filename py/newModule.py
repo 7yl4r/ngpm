@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 import os
 import fileinput
-import re
+
+import utils
 
 CONTROLLER_TEMPLATE = """require('angular');
 Howl = require('howler');    // for sounds (if you need them)
@@ -29,37 +30,14 @@ app.controller("{1}Controller", ['data', '$scope', '$rootScope', function(data, 
 module.exports = angular.module('{0}').name;"""
 
 
-def camel_2_underscore(string):
-    s1 = re.sub('(.)([A-Z][a-z]+)', r'\1 \2', string)
-    return re.sub('([a-z0-9])([A-Z])', r'\1 \2', s1).lower()
-
-
 def create_module(module_name=None):
     if module_name is None:
         module_name = raw_input("enter module name (spaces, lowercase). example: my module\n").strip()
 
-    # we don't want CamelCase here
-    module_name = camel_2_underscore(module_name)
+    module_name = utils.get_space_name(module_name)
 
-    # not allowed - / .
-    module_name.replace('-', ' ')
-    module_name.replace('/', ' ')
-    module_name.replace('.', ' ')
-
-    def get_camel_name(name):
-        words = name.split(' ')
-        if len(words) == 1:
-            return words[0]
-        elif len(words) > 1:
-            c_name = words[0]
-            for word in words[1:]:
-                c_name += word.title()
-            return c_name
-        else:
-            raise ValueError('wordlist ' + str(words) + 'len < 1')
-
-    camel_name = get_camel_name(module_name)
-    hyphen_name = module_name.replace(" ", "-")
+    camel_name = utils.get_camel_name(module_name)
+    hyphen_name = utils.get_hyphen_name(module_name)
 
     directory = './ng-modules/'+camel_name+'/'
     print 'creating', directory
@@ -101,7 +79,7 @@ def create_module(module_name=None):
         print 'adding module to app.coffee main module'
         inserted = False
         for line in fileinput.input('app.coffee', inplace=1):
-            if line.strip() == "var app = angular.module('the-oregon-trajectory', [":
+            if line.strip() == "        # WARN: do not change this comment line unless you update newModule.py as well!":
                 inserted = True
             else:
                 if inserted:

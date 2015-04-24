@@ -71,16 +71,17 @@ def add_to_json(name):
         print 'WARN: module', name, 'already registered in', CONFIG.module_dir, 'as', data['browser'][name]
     except KeyError:
         data['browser'][hyphen_name] = './' + CONFIG.module_dir + '/' + camel_name + '/' + camel_name + '.coffee'
+    write_package_json(data)
 
-
-def get_package_json():
-    with open(CONFIG.package_json, 'r') as json_file:
+def get_package_json(file=CONFIG.package_json):
+    # returns loaded json data for given file or for main application if none given
+    with open(file, 'r') as json_file:
         return json.load(json_file)
 
 
-def write_package_json(data):
-    # overwrites package.json
-    with open(CONFIG.package_json, 'w') as json_file:
+def write_package_json(data, file=CONFIG.package_json):
+    # overwrites package.json in app or given file
+    with open(file, 'w') as json_file:
         json.dump(data,json_file, indent=4, sort_keys=True)
 
 

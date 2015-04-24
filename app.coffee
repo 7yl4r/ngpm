@@ -4,6 +4,7 @@ require('angular')
 # "main" controller
 app = angular.module('the-oregon-trajectory', [
         # WARN: This comment required for ngpm; do not alter!
+        require('social-buttons'),
         require('ship-customizer'),
         require('leaderboard'),
         require('asteroid-mining'),

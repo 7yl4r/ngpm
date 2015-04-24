@@ -3,3 +3,4 @@ class CONFIG(object):
     package_json = 'package.json'
     app_coffee = 'app.coffee'
     app_less = 'app.less'
+    library = 'ng-library'

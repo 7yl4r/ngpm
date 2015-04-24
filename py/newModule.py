@@ -60,9 +60,7 @@ def create_module(module_name=None):
     with open(directory + camel_name + '.less', 'w') as w_file:
         w_file.write("/* styles for " + module_name + " module */")
 
-    data = utils.get_package_json()
-    data['browser'][hyphen_name] = directory + camel_name + '.coffee'
-    utils.write_package_json(data)
+    utils.add_to_json(camel_name)
 
     utils.add_coffee(hyphen_name)
 

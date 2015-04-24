@@ -61,6 +61,17 @@ def package_exists(package_name, dir=CONFIG.module_dir):
     return os.path.isdir(dir+"/"+name) and package_is_complete(name, dir)
 
 
+def add_to_json(name):
+    hyphen_name = get_hyphen_name(name)
+    camel_name = get_camel_name(name)
+
+    data = get_package_json()
+    try:
+        print 'WARN: module', name, 'already registered in', CONFIG.module_dir, 'as', data['browser'][name]
+    except KeyError:
+        data['browser'][hyphen_name] = './' + CONFIG.module_dir + '/' + camel_name + '/' + camel_name + '.coffee'
+
+
 def get_package_json():
     with open(CONFIG.package_json, 'r') as json_file:
         return json.load(json_file)

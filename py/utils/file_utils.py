@@ -16,8 +16,8 @@ def module_imported_in_app(name):
     name = get_camel_name(name)
     count = 0
 
-    count += count_substrings_in(CONFIG.app_coffee, '@import "'+CONFIG.module_dir+'/'+name+'/'+name)
-    count += count_substrings_in(CONFIG.app_coffee, "@import '"+CONFIG.module_dir+'/'+name+'/'+name)
+    count += count_substrings_in(CONFIG.app_less, '@import "'+CONFIG.module_dir+'/'+name+'/'+name)
+    count += count_substrings_in(CONFIG.app_less, "@import '"+CONFIG.module_dir+'/'+name+'/'+name)
 
     if count > 1:
         print "\tWARN: module", name, '"@import"ed multiple times in', CONFIG.app_less

@@ -1,6 +1,5 @@
 import unittest
 
-from CONFIG import CONFIG
 import file_utils
 
 TEST_NAME = "temp2"  # fake module name to use for testing (should be lowerCamelCase)

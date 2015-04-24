@@ -24,7 +24,7 @@ def remove_line(filename, rm_line):
                 if line != rm_line:
                     out_file.write(line)
     os.remove(CONFIG.app_less)
-    os.rename(TEMP_FILE, CONFIG.app_less)
+    os.rename(TEMP_FILE, filename)
 
 
 def remove_less(name):
@@ -35,7 +35,7 @@ def remove_less(name):
 
 def remove_coffee(name):
     # removes line require()ing <name> module from app.coffee
-    name = get_hyphen_name()
+    name = get_hyphen_name(name)
     remove_line(CONFIG.app_coffee, "        require('" + name + "'),")
 
 

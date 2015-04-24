@@ -6,6 +6,7 @@ import os.path
 import CONFIG
 import utils
 import newModule
+from ..ngpm import main
 
 TEST_NAME = "temp2"  # fake module name to use for testing (should be lowerCamelCase)
 
@@ -16,7 +17,7 @@ class TestNewModule(unittest.TestCase):
         newModule.create_module(TEST_NAME)
 
     def tearDown(self):
-        shutil.rmtree(CONFIG.module_dir+'/'+TEST_NAME)
+        main(['rm', 'TEST_NAME'])
 
     def test_that_requested_files_exists(self):
         """tests that directory is created"""

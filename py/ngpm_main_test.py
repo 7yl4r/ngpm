@@ -1,9 +1,9 @@
 import unittest
 
 import os
-import shutil
 
 import CONFIG
+import utils
 from ..ngpm import main
 
 
@@ -16,7 +16,14 @@ class TestMain(unittest.TestCase):
             self.assertTrue(os.path.isfile(CONFIG.module_dir+'/temp/temp.html'))
             self.assertTrue(os.path.isfile(CONFIG.module_dir+'/temp/temp.less'))
         finally:
-            shutil.rmtree(CONFIG.module_dir+'/temp')
+            main(['rm', 'temp'])
+
+    def test_add_n_remove(self):
+        """tests create new, then rm module should return to initial state"""
+        main(['new', 'temp'])
+        main(['rm', 'temp'])
+        self.assertNotIn('temp', utils.get_package_json()['browser'])
+
     
 if __name__ == '__main__':
     unittest.main()

@@ -4,7 +4,7 @@ import os
 
 from CONFIG import CONFIG
 import utils
-from ..ngpm import main
+from ..src import main
 
 
 class TestMain(unittest.TestCase):

@@ -5,7 +5,7 @@ import os.path
 from CONFIG import CONFIG
 import utils
 import newModule
-from ..ngpm import main
+from ..src import main
 
 TEST_NAME = "temp2"  # fake module name to use for testing (should be lowerCamelCase)
 

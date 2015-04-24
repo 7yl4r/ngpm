@@ -142,16 +142,18 @@ def add_coffee(name):
         flag2 = False
         lines = []
         for line in fileinput.input('app.coffee', inplace=1):
-            lines.append(line)
             if "# WARN: This comment required for ngpm; do not alter!" in line:
                 inserted = True
                 flag = True
             else:
                 if inserted:
                     print "        require('" + name + "'),"
+                    lines.append("       require('"+name+"'),\n")
                     flag2 = True
                     inserted = False
             print line,
+            lines.append(line)
+
         print "flag:", flag
         print "flag2:", flag2
         my_str = "# WARN: This comment required for ngpm; do not alter!"

@@ -9,7 +9,7 @@ from setuptools import setup, find_packages
 from codecs import open
 from os import path
 
-VERSION = '0.2.1'
+VERSION = '0.2.2'
 
 here = path.abspath(path.dirname(__file__))
 
@@ -98,7 +98,7 @@ setup(
     # pip to create the appropriate form of executable for the target platform.
     entry_points={
         'console_scripts': [
-            'ngpm=ngpm:main',
+            'ngpm=src.main:main',
         ],
     },
 )

@@ -3,12 +3,12 @@ __author__ = '7yl4r'
 
 import sys
 
-from src.newModule import create_module
-from src.uninstallModule import remove_module
-from src.lsModules import ls
-from src.installModule import install
+from newModule import create_module
+from uninstallModule import remove_module
+from lsModules import ls
+from installModule import install
 
-VERSION = '0.2.1'
+VERSION = '0.2.2'
 SHORT_FLAGS = {
     '-v': '--version',
     '-h': '--help'

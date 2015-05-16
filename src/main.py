@@ -55,6 +55,7 @@ def handle_flag(flag, args):
 
 def main(args=[]):
     if len(args) < 1:
+        print '\tERR: no args recieved'
         show_usage()
     else:
         for i in range(len(args)):

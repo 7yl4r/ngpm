@@ -53,7 +53,7 @@ def handle_flag(flag, args):
         return 1
 
 
-def main(args=[]):
+def main(args=sys.argv[1:]):
     if len(args) < 1:
         print '\tERR: no args recieved'
         show_usage()
